@@ -9,7 +9,7 @@ You may do anything with your plugin that the GPLv3 allows, including selling it
 
 ### I want to release my plugin under a different open-source license or freeware.
 
-Rack offers a [VCV Rack Non-Commercial Plugin License Exception](https://github.com/VCVRack/Rack/blob/v1/LICENSE.md) which allows you to license your plugin under any terms you want, as long as it is offered free of charge. Lincenses must match the list of available SPDX [compatible lincenses](https://spdx.org/licenses/).
+Rack offers a [VCV Rack Non-Commercial Plugin License Exception](https://github.com/VCVRack/Rack/blob/v1/LICENSE.md) which allows you to license your plugin under any terms you want, as long as it is offered free of charge. Lincenses must match the list of identifiers [SPDX compatible lincenses](https://spdx.org/licenses/).
 
 You may choose:
 - **Open-source**. [BSD 3-clause](https://opensource.org/licenses/BSD-3-Clause), [MIT](https://opensource.org/licenses/MIT), and [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/) are popular licenses.
