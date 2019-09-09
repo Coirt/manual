@@ -8,9 +8,9 @@ This patch is designed to familerise yourself with how VCV Rack works. The modul
 
 - **Midi CV:** Takes input from the user and converts it into voltages which VCV Rack understands.
 
-- **VCO-1:** Voltage Controled Oscillator with individual Sine, Triangle, Saw and Square waveform ouputs. The Frequency knob sets the pitch of the oscillator.
+- **VCO-1:** Voltage Controlled Oscillator with individual Sine, Triangle, Sawtooth and Square waveform ouputs. The Frequency knob sets the pitch of the oscillator.
 
-- **VCF:** Voltage Contolled Filter, applies a filtering effect to the sound output which in this case is coming from the Saw output on VCO-1.
+- **VCF:** Voltage Controlled Filter, applies a filtering effect to the sound output which in this case is coming from the Saw output on VCO-1.
 
 - **ADSR:** Attack Decay Sustain Release, Converts note on/off or triggered intput into time based envelope signal which can shape how the volume of the sound is preceived by the ear. Each stage on the envelope can be set by a knob or by modulation from another source.
 
