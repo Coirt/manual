@@ -24,37 +24,87 @@ You can move modules around by clicking and dragging an empty space on its panel
 
 ![Moving modules](images/QS_MovingModules.gif)
 
+
+
 # Getting sound
 
 The sound from VCO-1 or any oscillator is constantly playing in the background. In the default patch it is set up in such a way that you only hear sound when you want to. To get sound first select an audio device on the Audio-8 module, in my case it will be ASIO and my interface's device driver.
+
 
 ![Audio device](images/QS_AudioDevice.png)
 
 The patch is already set up to take input from your computer keyboard and convert it into MIDI messages which are interpreted by **VCO-1** _v/oct input_. Once your sound driver is selected on **Audio-8** pressing certain keys on your keyboard will simultaneously send a Gate signal to **ADSR** telling it to start and send the midi note information to VCO-1 telling it what key to play. Refer to this image to see which keys on the keyboard produce which notes. 
 
+
 ![Keyboard](images/qwerty.png)
+
+
 
 If you have a midi keyboard installed on your system this can be selected in the list of devices from Midi-CV.
 
+
 ![Midi driver](images/QS_Midi1.png)
+
+
 
 # Further exploration
 
-By now you may have seen that **Scope** shows the waveform of the sound coming from **VCO-1** _via **Mixer**_
+By now you may have seen that **Scope** shows the waveform coming from **VCO-1** _via **Mixer**_
 
-You may want to visualise the envelope coming from **ADSR** you can do so by dragging a cable from the Y input on **Scope** and connecting it to the Output on **ADSR** now each time you press a key the envelope will be displayed overlayed by the sound of the waveform.
+You may want to visualise the envelope coming from **ADSR** you can do so by dragging a cable from the Y input on **Scope** and connecting it to the Output on **ADSR** now each time you press a key the envelope will be displayed overlayed by the Saw waveform.
 ![Visual ADSR](images/QS_ADSRscope.png)
 
 Adding additional modules can be done by right-clicking on an empty space on the rack or by pressing `<enter>`.
 ![Module Browser](images/QS_Browser.PNG)
 
+By clicking left mouse on a module in the browser it will be added immediatly in the nearest available space but you may want to add and move a module to a specific spot in the Rack you can do so by holding onto `Left Mouse` while dragging. You may want to add an additional module to the patch so perhaps lets add **LFO-1**.
+
+Let's see what the LFO is doing! Right Clicking on any cable at a Port will remove the connection. Fear not if like me you happen to remove the wrong cable there is an undo `CTRL / CMD + Z` and redo `CTRL / CMD + SHIFT + Z` by keyboard shortcut or from the _edit menu_.
+
+
+![Visual ADSR and LFO](images/QS_undoCableLFO.gif)
+
+As mentioned earlier an Oscilattor's output will send out a constant voltage. **LFO-1** (Low Frequecy Osilattor) as the name implies is very similar to **VCO-1** in the sense of being an oscillator, the only difference is its frequency is slower. Frequency in sound can be divisional, meaning if you divide it by 2 it will be half as much. Lets turn on Tooltips and see what the default LFO frequency is. To Do so click View > Parameter tooltips. Now when you mouse over any knob some useful information can be seen that might help for this next part.
+
+Technically we could use **LFO-1** as a sound device but for the purposes of the quick start guide lets just use it as it was intended.
+In the default template patch locate the **VCF** voltage controlled filter. You may want to modulate something here with the LFO. The wave output from the LFO is constanly oscillating just like **VCO-1**. Voltages in VCV Rack can be Bipolar, one with 2 poles, a negitive and positive or Unipolar, with 1 pole positive. Volume in VCV Rack can be manipulated by Unipolar signals, as seen with the ADSR envelope on the scope.
+
+There are many useful things you can do with an LFO. Modulate a level or frequency set a pitch _v/oct inputs_ etc.. too many to list here. Lets show an example of modulating the frequency on the VCF...
+
+Remove the 'Freq' cable from the VCF by clicking and holding the cable input on the VCF then dragging the cable away from the port or by right clicking, whichever you prefer. 
+
+![VCF/LFO](images/QS_FreqCV.gif)
+
+The previous connection to the frequency modulation was the ADSR envelope output, the frequency on the filter was increased each time a note message was recieved. The envelope was unipolar and its shape was set by the knobs which were triggered over time. Now the connection is from the LFO, each time a note is recieved the ADSR is still doing something, modulating the Volume on the mixer. Playing some notes should reveal the capabilities of LFO's.
+
+Experiement further with this effect by changing the LFO frequency or outputs. The tooltips we turned on earlier are not necessary but they can be helpful...
+
+The relationship between frequency and BPM can help keep LFO's in sync to a tempo. The Hz value on an LFO or VCO is Cycles Per Second. If there is 60 seconds in 1 minute then converting Hz to BPM is rather easy `Hz value * 60 = BPM`. So far Everything we have done to the default patch has been dependant on user input but what if you wanted to sequence something?
+
+# Adding a sequencer
+
+**Seq-3** is an 8 step 3 channel step sequencer. It has a clock knob to set the tempo or BPM for the step rate. The gate output and row outputs can be your note on/off and v/oct signals. If you prefer to keep the keyboard input and add another voice to the patch lets do this!
+
+There is another Oscillator in Fundamental **VCO-2** lets add this and **Seq-3** to the patch. Now Maybe you want to add some other modules like another VCF and ADSR. You can do so in 2 ways adding them manually from the module browser, like before or by duplicating modules already in the patch. To duplicate modules already in the patch pressing `CTRL / CMD + i` when moused over a module will duplicate the module or right clicking an empty space on module's panel will bring up a context menu which also has an option to duplicate. 
+
+The choice of melody is completely up to yourself for the sequence but I'll show you some basic functions that will get you patching, then you are on your own grasshoper!
+
+First off lets take a look at volts per octave (v/oct), we will break this down:
+
+- There are 12 notes in 1 octave 
+- 1v is an 1 octave. 
+- So if we divide 1 by 12 `1 / 12` we get 0.083 volts. 
+- So therefor, each note in 1 octave is equal to 0.83v. 
+
+If 1 octave is 1 volt then 6 semitones is equal to approximatily 0.5 volts easy peasy! (0.498v)
+
+The tooltips we turned on are now starting to be invaluable. On **Seq-3** for the purposes of demostration lets program the first 3 knobs to step in 4 semitones the first knob 0v next 0.332v next 0.664v. The next knob, #4 we'll jump an octave to make it easier so 1v 1.332 etc.
+
+Now the fun part, Patching. Drag a cable from the "OUT" of **ADSR**, insert this into the level input on **Mixer** "CV 2". Take the "OUT" of **VCO-2** and insert this into **Mixer** "IN 2". We need a gate to trigger the envelope so take the gate oupt on **Seq-3** an insert it into "GATE" on **ADSR**. Congradualtions you have a sequence playing! What about note changes?
+
+Rememeber v/oct from earlier. VCO-2 does not seem to have an input labeled v/oct. What it does have is FM (Frequecy Modulation). Patch to here, But wait still no notes? The FM CV knob on VCO-2 will help you out here, this is what some call an attenuation knob. It controls the amount of signal recieved, turning this to full 100% will send the programmed sequence / v/oct to the oscillators frequency.
+
 At this point, you are ready to learn the rest of the Fundamental modules to build your own unique patches.
 I personally recommend that you attempt to push the Fundamental modules to their limits before moving on to other official or third-party plugins. They are more capable than they might appear, and learning how to use them effectively will give you more power and understanding when installing more modules later. When you are ready, install more plugins with the [Plugin Manager](https://vcvrack.com/plugins.html).
 
 When you do have more plugins added via your VCV account they will display in the module browser when it is opened. Filtering for specific modules can be done by searching or by clicking on indivdual tags.
-
-By clicking Left Mouse it will be added immediatly in the nearest available space but you may want to add and move a module to a specific spot in the Rack you can do so by holding onto Left Mouse while dragging straight from the module broswer. You may want to add an additional voice to the patch so maybe add **VCO-2** and **LFO-1**.
-
-Lets see what the LFO is doing. Right Clicking on any cable at a Port will remove the connection. Fear not if like me you happen to remove the wrong cable there is an undo `CTRL / CMD + Z` and redo `CTRL / CMD + SHIFT + Z` by keyboard shortcutor  in the _edit menu_.
-![Visual ADSR and LFO](images/QS_undoCableLFO.gif)
-     
