@@ -28,12 +28,12 @@ You can move modules around by clicking and dragging an empty space on its panel
 
 # Getting sound
 
-The sound from VCO-1 or any oscillator is constantly playing in the background. In the default patch it is set up in such a way that you only hear sound when you want to. To get sound first select an audio device on the Audio-8 module, in my case it will be ASIO and my interface's device driver.
+The sound from VCO-1 or any oscillator is constantly playing. In the default patch it is set up in such a way that you only hear sound when you want to. To get sound first select an audio device on the Audio-8 module, in my case it will be ASIO and my interface's device driver.
 
 
 ![Audio device](images/QS_AudioDevice.png)
 
-The patch is already set up to take input from your computer keyboard and convert it into MIDI messages which are interpreted by **VCO-1** _v/oct input_. Once your sound driver is selected on **Audio-8** pressing certain keys on your keyboard will simultaneously send a Gate signal to **ADSR** telling it to start and send the midi note information to VCO-1 telling it what key to play. Refer to this image to see which keys on the keyboard produce which notes. 
+The patch is already set up to take input from your computer keyboard and convert it into messages which are interpreted by **VCO-1** _v/oct input_. Once your sound driver is selected on **Audio-8** pressing certain keys on your keyboard will simultaneously send a Gate signal to **ADSR** telling it to start and send the midi note information to VCO-1 telling it what key to play. Refer to this image to see which keys on the keyboard produce which notes. 
 
 
 ![Keyboard](images/qwerty.png)
