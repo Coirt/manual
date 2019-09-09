@@ -33,7 +33,7 @@ The sound from VCO-1 or any oscillator is constantly playing. In the default pat
 
 ![Audio device](images/QS_AudioDevice.png)
 
-The patch is already set up to take input from your computer keyboard and convert it into messages which are interpreted by **VCO-1** _v/oct input_. Once your sound driver is selected on **Audio-8** pressing certain keys on your keyboard will simultaneously send a Gate signal to **ADSR** telling it to start and send the midi note information to VCO-1 telling it what key to play. Refer to this image to see which keys on the keyboard produce which notes. 
+The patch is already set up to take input from your computer keyboard and convert it into messages which are interpreted by **VCO-1** _v/oct input_. Once your sound driver is selected on **Audio-8** pressing certain keys on your keyboard will simultaneously send a Gate signal to **ADSR** telling it to start and send the midi note information to VCO-1 telling it what key to be in. Refer to this image to see which keys on the keyboard produce which notes. 
 
 
 ![Keyboard](images/qwerty.png)
